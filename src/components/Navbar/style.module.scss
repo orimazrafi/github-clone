@@ -39,12 +39,50 @@
 
 }
 
-.blue_notification {
-    position: relative;
-    bottom: 10px;
-    right: 11px;
-    height: 10px;
-    width: 10px;
-    background: linear-gradient(rgb(84, 163, 255), rgb(0, 110, 237));
-    border-radius: 50%;
+.title {
+    font-size: 16px;
+    font-weight: 600;
+
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.right_links {
+    &:hover {
+        cursor: pointer;
+    }
+
+
+    .blue_notification {
+        position: relative;
+        bottom: 10px;
+        right: 11px;
+        height: 10px;
+        width: 10px;
+        background: linear-gradient(rgb(84, 163, 255), rgb(0, 110, 237));
+        border-radius: 50%;
+    }
+
+
+}
+
+
+.background_container:hover {
+    cursor: pointer;
+    background: var(--background-link-hover)
+}
+
+.set_status {
+    &:hover {
+        cursor: pointer;
+        color: blue;
+
+        svg {
+
+            fill: blue !important;
+        }
+    }
+
+    // background-color: blue;
 }
