@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -8,12 +8,51 @@ import style from "./style.module.scss"
 import { SvgIcon } from './../SvgIcon/SvgIcon';
 import { colors, fonts } from './../../constans';
 import { useHistory } from 'react-router-dom';
-import { Box, Avatar } from '@material-ui/core';
+import { Box, Avatar, Grid, Container, FormControlLabel, Checkbox, NativeSelect, withStyles, FormControl } from '@material-ui/core';
 import { DropdownList } from './../DropdownList/DropdownList';
 import { DownArrowWithIcon } from './../DownArrowWithIcon/DownArrowWithIcon';
 import { useDialogBox, useModal } from '../../hooks/hooks';
 import { userName } from './../../helpers';
 import { ModalPopup } from './../ModalPopup/ModalPopup';
+import { BorderBottom } from '../BorderBottom/BorderBottom';
+import InputBase from '@material-ui/core/InputBase';
+
+const BootstrapInput = withStyles((theme) => ({
+    root: {
+        'label + &': {
+            marginTop: theme.spacing(3),
+        },
+    },
+    input: {
+        borderRadius: 4,
+        position: 'relative',
+        backgroundColor: theme.palette.background.paper,
+        border: '1px solid #ced4da',
+        fontSize: 16,
+        padding: '4px',
+        transition: theme.transitions.create(['border-color', 'box-shadow']),
+        // Use the system font instead of the default Roboto font.
+        fontFamily: [
+            '-apple-system',
+            'BlinkMacSystemFont',
+            '"Segoe UI"',
+            'Roboto',
+            '"Helvetica Neue"',
+            'Arial',
+            'sans-serif',
+            '"Apple Color Emoji"',
+            '"Segoe UI Emoji"',
+            '"Segoe UI Symbol"',
+        ].join(','),
+        '&:focus': {
+            borderRadius: 4,
+            borderColor: '#80bdff',
+            boxShadow: '0 0 0 0.2rem rgba(0,123,255,.25)',
+        },
+    },
+}))(InputBase);
+
+
 const useStyles = makeStyles((theme) => ({
     grow: {
         flexGrow: 1,
@@ -23,15 +62,24 @@ export const Navbar = () => {
 
     const history = useHistory()
     const classes = useStyles();
+    const [status, setStatus] = useState("")
+    const handleStatus = (event) => {
+        setStatus(event.target.value);
+    };
     const [openModal, setOpenModal] = React.useState(false);
+    const [busy, setBusy] = React.useState(false);
     const [handleOpenModal, handleCloseModal] = useModal(setOpenModal)
     const [newDialod, setNewDialod] = React.useState(null);
     const [handlNewOpen, handleNewClose, newId, newOpen] = useDialogBox(newDialod, setNewDialod)
     const [profileDialod, setProfileDialod] = React.useState(null);
     const [handleProfileOpen, handleProfileClose, profileId, profileOpen] = useDialogBox(profileDialod, setProfileDialod)
+    const handleChange = () => {
+        setBusy(pre => pre === false ? true : false)
+    }
     const BlueHoverBackground = (props) => <Box className={style.background_container}>
         {props.children}
     </Box>
+
 
     return (
         <div className={classes.grow}>
@@ -124,7 +172,7 @@ export const Navbar = () => {
                                 { label: "Your Projects", to: "/profile/projects" },
                                 { label: "Your Stars", to: "/profile/stars" },
                                 { label: "Your Gists", to: "/profile/gists" },
-                                { other: <div style={{ borderBottom: "1px solid lightgray" }} /> },
+                                { other: <BorderBottom /> },
                                 { label: "Upgrade", to: "/profile/upgrade" },
                                 { label: "Feature preview", to: "/profile/preview" },
                                 { label: "Help", to: "/profile/help" },
@@ -156,8 +204,92 @@ export const Navbar = () => {
             <ModalPopup
                 onClose={handleCloseModal}
                 open={openModal}
+                maxWidth="600px"
+                margin="auto"
+                position="relative"
             >
-                <h2>www</h2>
+                <Container style={{ background: "#f6f8fa", padding: "15px 25px" }}>
+                    <Grid container justify="space-between" alignItems="center" >
+                        <div style={{ color: "#586069" }}>
+                            Edit Status
+                        </div>
+                        <SvgIcon
+                            height="15px"
+                            fill="#586069"
+                            pathname="M3.72 3.72a.75.75 0 011.06 0L8 6.94l3.22-3.22a.75.75 0 111.06 1.06L9.06 8l3.22 3.22a.75.75 0 11-1.06 1.06L8 9.06l-3.22 3.22a.75.75 0 01-1.06-1.06L6.94 8 3.72 4.78a.75.75 0 010-1.06z"
+                        />
+                    </Grid>
+                </Container>
+                <div>
+                    <Grid container style={{ margin: "15px 10px 10px 25px" }}>
+                        <div style={{ border: "1px solid rgba(27,31,35,.15)", padding: "5px 10px", borderRadius: "3px", background: "#fafbfc" }}>
+                            <SvgIcon
+                                height="20px"
+                                fill="#586069"
+                                pathname="M1.5 8a6.5 6.5 0 1113 0 6.5 6.5 0 01-13 0zM8 0a8 8 0 100 16A8 8 0 008 0zM5 8a1 1 0 100-2 1 1 0 000 2zm7-1a1 1 0 11-2 0 1 1 0 012 0zM5.32 9.636a.75.75 0 011.038.175l.007.009c.103.118.22.222.35.31.264.178.683.37 1.285.37.602 0 1.02-.192 1.285-.371.13-.088.247-.192.35-.31l.007-.008a.75.75 0 111.222.87l-.614-.431c.614.43.614.431.613.431v.001l-.001.002-.002.003-.005.007-.014.019a1.984 1.984 0 01-.184.213c-.16.166-.338.316-.53.445-.63.418-1.37.638-2.127.629-.946 0-1.652-.308-2.126-.63a3.32 3.32 0 01-.715-.657l-.014-.02-.005-.006-.002-.003v-.002h-.001l.613-.432-.614.43a.75.75 0 01.183-1.044h.001z"
+                            />
+                        </div>
+                        <div style={{ border: "1px solid rgba(27,31,35,.15)", borderRadius: "3px", background: "#fafbfc", padding: "5px 200px 5px 5px" }}>
+                            what's happening
+                        </div>
+                    </Grid>
+                </div>
+                <Grid container>
+                    <FormControlLabel
+                        control={
+                            <Checkbox
+                                checked={busy}
+                                onChange={handleChange}
+                                name="checkedB"
+                                color="primary"
+                                style={{ marginLeft: "25px" }}
+                            />
+                        }
+                        label="Busy"
+                    />
+                    <Grid>
+                    </Grid>
+                    <Grid style={{ marginLeft: "8.33%" }}>
+                        <Grid >
+                            When others mention you, assign you, or request your review,
+                            GitHub will let them know that you have limited availability.
+                        </Grid>
+
+                    </Grid>
+                </Grid>
+                <BorderBottom margin="10px 0" />
+                <FormControl >
+                    <Grid container>
+                        <Box style={{ alignSelf: "center", marginLeft: "25px", marginRight: "5px" }}>Clear status</Box>
+                        <NativeSelect
+                            id="demo-customized-select-native"
+                            value={status}
+                            onChange={handleStatus}
+                            input={<BootstrapInput />}
+                        >
+                            <option value={"never"}>
+                                never
+                        </option>
+                            <option value={"in 30 minutes"}>in 30 minutes</option>
+                            <option value={"in 4 hours"}>in 4 hours</option>
+                            <option value={"today"}>today</option>
+                            <option value={"this week"}>this week</option>
+
+                        </NativeSelect>
+                    </Grid>
+
+                </FormControl>
+                <BorderBottom margin="10px 0" />
+                <Container style={{ paddingBottom: "10px" }}>
+                    <Grid container>
+                        <Grid item xs={6} m={2}>
+                            <button className={style.set_status_btn} style={{ textAlign: "center" }} >Set status</button>
+                        </Grid>
+                        <Grid item xs={6} m={2}>
+                            <button className={style.clear_status_btn}>Clear status</button>
+                        </Grid>
+                    </Grid>
+                </Container>
             </ModalPopup>
         </div>
     );
