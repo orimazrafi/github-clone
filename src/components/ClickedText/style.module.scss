@@ -1,0 +1,11 @@
+.text_wrapper {
+    color: var(--muted-text);
+    font-size: 12px;
+
+    &:hover {
+        color: var(--background-link-hover);
+        cursor: pointer;
+    }
+
+
+}

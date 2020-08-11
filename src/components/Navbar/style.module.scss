@@ -2,70 +2,42 @@
     background: blue;
 }
 
-.searchBox {
-    font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji !important;
-    // background-color: hsla(0, 0%, 100%, .125);
-    border-radius: 8px;
-    padding: 5px 12px;
-    border: 0;
-    color: var(--white-color);
-    box-shadow: inset 0 1px 0 rgba(225, 228, 232, .2);
-    background: hsla(0, 0%, 100%, .125) url("https://github.githubassets.com/images/search-key-slash.svg") no-repeat;
-    background-position: right;
-    background-position-x: 150px;
-
-    &::placeholder {
-        /* Chrome, Firefox, Opera, Safari 10.1+ */
-        color: var(--white-color);
-        opacity: 1;
-        /* Firefox */
-    }
-
-    &:-ms-input-placeholder {
-        /* Internet Explorer 10-11 */
-        color: var(--white-color);
-    }
-
-    &::-ms-input-placeholder {
-        /* Microsoft Edge */
-        color: var(--white-color);
-    }
-
-    &:focus,
-    &:active {
-        border: 0;
-        outline: 0;
-    }
-
+.bell_notification {
+    display: block;
 }
 
-.title {
-    font-size: 16px;
-    font-weight: 600;
-
-    &:hover {
-        cursor: pointer;
-    }
+.desktop_look {
+    display: none;
 }
+
+.home_page_icon {
+    margin: auto;
+}
+
+
+
+// .input_and_center_links {
+.blue_notification {
+    position: relative;
+    bottom: 10px;
+    right: 11px;
+    height: 10px;
+    width: 10px;
+    background: linear-gradient(rgb(84, 163, 255), rgb(0, 110, 237));
+    border-radius: 50%;
+}
+
+// display: none;
+// }
 
 .right_links {
+    // display: none;
+
     &:hover {
         cursor: pointer;
     }
-
-
-    .blue_notification {
-        position: relative;
-        bottom: 10px;
-        right: 11px;
-        height: 10px;
-        width: 10px;
-        background: linear-gradient(rgb(84, 163, 255), rgb(0, 110, 237));
-        border-radius: 50%;
-    }
-
-
 }
+
 
 
 .background_container:hover {
@@ -109,4 +81,73 @@
 .clear_status_btn {
     background: #fafbfc;
     color: var(--dark-clor);
+}
+
+@media screen and (min-width: 920px) {
+    .desktop_look {
+        display: block;
+
+        .searchBox {
+            align-self: center;
+
+            font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji !important;
+            // background-color: hsla(0, 0%, 100%, .125);
+            border-radius: 8px;
+            padding: 5px 12px;
+            border: 0;
+            color: var(--white-color);
+            box-shadow: inset 0 1px 0 rgba(225, 228, 232, .2);
+            background: hsla(0, 0%, 100%, .125) url("https://github.githubassets.com/images/search-key-slash.svg") no-repeat;
+            background-position: right;
+            background-position-x: 150px;
+
+            &::placeholder {
+                /* Chrome, Firefox, Opera, Safari 10.1+ */
+                color: var(--white-color);
+                opacity: 1;
+                /* Firefox */
+            }
+
+            &:-ms-input-placeholder {
+                /* Internet Explorer 10-11 */
+                color: var(--white-color);
+            }
+
+            &::-ms-input-placeholder {
+                /* Microsoft Edge */
+                color: var(--white-color);
+            }
+
+            &:focus,
+            &:active {
+                border: 0;
+                outline: 0;
+            }
+
+        }
+
+        .title {
+            font-size: 16px;
+            font-weight: 600;
+
+            &:hover {
+                cursor: pointer;
+            }
+        }
+
+        .right_links {
+            display: block;
+        }
+
+
+
+        .input_and_center_links {
+            display: flex;
+            flex-direction: row;
+        }
+    }
+
+    .bell_notification {
+        display: none;
+    }
 }

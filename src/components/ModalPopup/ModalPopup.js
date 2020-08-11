@@ -1,8 +1,8 @@
 import React from 'react'
 import { Modal } from '@material-ui/core'
 import style from "./style.module.scss"
-export const ModalPopup = (props) =>
-    <Modal
+export const ModalPopup = (props) => {
+    return <Modal
         className={style.modal}
         style={{
             maxWidth: props.maxWidth,
@@ -19,5 +19,8 @@ export const ModalPopup = (props) =>
             className={style.modal}
         >
             {props.children}
+
         </div>
     </Modal>
+}
+

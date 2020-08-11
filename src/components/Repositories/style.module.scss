@@ -1,0 +1,30 @@
+.repository_container {
+    margin-top: 2rem;
+    overflow: auto;
+    height: 80vh;
+
+    .new_btn {
+        background: #2ea44f;
+        border-color: rgba(27, 31, 35, .15);
+        box-shadow: 0 1px 0 rgba(27, 31, 35, .1), inset 0 1px 0 hsla(0, 0%, 100%, .03);
+        color: var(--white-color);
+        border-radius: 4px;
+        padding: 6px 9px;
+
+    }
+
+    .organization_btn {
+        color: var(--background-link-hover);
+        background: #fafbfc;
+        border-radius: 6px;
+        padding: 6px 12px;
+        border-color: rgba(27, 31, 35, .15);
+        box-shadow: 0 1px 0 rgba(27, 31, 35, .04), inset 0 1px 0 hsla(0, 0%, 100%, .25);
+
+        &:hover {
+            background-color: var(--background-link-hover);
+            color: var(--white-color);
+            font-weight: bold;
+        }
+    }
+}
