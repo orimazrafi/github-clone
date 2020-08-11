@@ -3,7 +3,7 @@
     font-size: 12px;
 
     &:hover {
-        color: var(--background-link-hover);
+        color: var(--background-link-hover) !important;
         cursor: pointer;
     }
 

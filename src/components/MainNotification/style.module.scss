@@ -1,0 +1,15 @@
+.main_notification_wrapper {
+    margin-top: 2rem;
+}
+
+.hidden_element {
+    display: none;
+}
+
+.element {
+    &:hover {
+        &+.hidden_element {
+            display: block !important;
+        }
+    }
+}

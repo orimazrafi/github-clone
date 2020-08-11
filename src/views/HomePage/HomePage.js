@@ -1,6 +1,7 @@
 import React from 'react'
 import { Grid, Container } from '@material-ui/core'
 import { Repositories } from './../../components/Repositories/Repositories';
+import { MainNotification } from './../../components/MainNotification/MainNotification';
 export const HomePage = (props) =>
     <Grid container >
         <Grid item xs={3} >
@@ -10,7 +11,8 @@ export const HomePage = (props) =>
             </Container> </Grid>
         <Grid item xs={6}>
             <Container>
-                Main
-                </Container></Grid>
+                <MainNotification />
+            </Container>
+        </Grid>
         <Grid item xs={3}><Container>aside</Container></Grid>
     </Grid>

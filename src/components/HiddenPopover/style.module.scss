@@ -1,0 +1,20 @@
+.hidden_element {
+    display: none;
+    position: absolute;
+}
+
+.hidden_element:hover {
+    &.hidden_element {
+        display: block;
+    }
+}
+
+.element {
+    &:hover {
+        cursor: pointer;
+
+        &+.hidden_element {
+            display: block !important;
+        }
+    }
+}
