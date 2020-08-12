@@ -4,11 +4,11 @@ import { Repositories } from './../../components/Repositories/Repositories';
 import { MainNotification } from './../../components/MainNotification/MainNotification';
 export const HomePage = (props) =>
     <Grid container >
-        <Grid item xs={3} >
+        <Grid item xs={3} style={{ background: "white", height: "95vh", overflow: "auto" }} >
             <Container>
                 <Repositories />
-
-            </Container> </Grid>
+            </Container>
+        </Grid>
         <Grid item xs={6}>
             <Container>
                 <MainNotification />
