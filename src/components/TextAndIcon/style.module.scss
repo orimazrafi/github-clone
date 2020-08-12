@@ -3,12 +3,16 @@
 
     svg {
 
-        fill: blue !important;
+        fill: var(--background-link-hover) !important;
     }
 
     span {
 
 
-        color: blue !important;
+        color: var(--background-link-hover) !important;
+
+        &.text_hover:hover {
+            text-decoration: underline;
+        }
     }
 }
