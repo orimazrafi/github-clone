@@ -95,3 +95,26 @@ export const repositories = [
 
     },
 ]
+export const frameworksArray = [
+    {
+        repository: "CodyHouse/codyhouse-framework",
+        repositorySummary: "A lightweight front-end framework for building accessible, bespoke interfaces.",
+        framework: "CSS",
+        number: "963",
+        background: "purple"
+    },
+    {
+        repository: "rgrove/sanitize",
+        repositorySummary: "Ruby HTML and CSS sanitizer.",
+        framework: "HTML",
+        number: "1.9k",
+        background: "#e34c26"
+    },
+    {
+        repository: "wesbos/Syntax",
+        repositorySummary: "A website for the Syntax Podcast",
+        framework: "JavaScript ",
+        number: "550",
+        background: "#f1e05a"
+    },
+]
