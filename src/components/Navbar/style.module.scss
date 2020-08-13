@@ -31,19 +31,24 @@
 // }
 
 .right_links {
-    // display: none;
 
     &:hover {
         cursor: pointer;
     }
 }
 
+.dropdown_links {
+    color: gray;
+    font-size: 13px;
+    text-decoration: none;
 
+}
 
 .background_container:hover {
     cursor: pointer;
     background: var(--background-link-hover)
 }
+
 
 .set_status {
     &:hover {

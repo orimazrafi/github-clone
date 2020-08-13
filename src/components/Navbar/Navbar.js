@@ -7,7 +7,7 @@ import Typography from '@material-ui/core/Typography';
 import style from "./style.module.scss"
 import { SvgIcon } from './../SvgIcon/SvgIcon';
 import { colors, fonts } from './../../constans';
-import { useHistory } from 'react-router-dom';
+import { useHistory, Link } from 'react-router-dom';
 import { Box, Avatar, Grid, Container, FormControlLabel, Checkbox, NativeSelect, withStyles, FormControl } from '@material-ui/core';
 import { DropdownList } from './../DropdownList/DropdownList';
 import { DownArrowWithIcon } from './../DownArrowWithIcon/DownArrowWithIcon';
@@ -93,7 +93,10 @@ export const Navbar = () => {
                             color="inherit" aria-label="menu">
                             <MenuIcon />
                         </IconButton>
-                        <div className={style.home_page_icon}>
+                        <div className={style.home_page_icon}
+                            onClick={() => history.push("/")}
+
+                        >
                             <SvgIcon
 
                                 height="32px"
@@ -176,7 +179,7 @@ export const Navbar = () => {
                                     {link.label ?
                                         <BlueHoverBackground key={Math.random()}>
                                             <Typography className={classes.typography} style={{ padding: "10px 15px", width: "140px", color: "#24292e" }} >
-                                                {link.label}
+                                                <Link to={link.to} style={{ color: "black" }} className={style.dropdown_links}>{link.label}</Link>
                                             </Typography>
                                         </BlueHoverBackground>
                                         : <Box style={{ color: "#24292e" }} >
