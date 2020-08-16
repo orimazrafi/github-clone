@@ -1,0 +1,19 @@
+.contribute_settings:hover {
+    background: lightblue;
+    cursor: pointer;
+}
+
+.calendar_board {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 10px;
+    padding: 5px 40px 5px 0;
+    line-height: 2.5ex;
+    height: 15.5ex;
+    overflow: hidden;
+
+    .calendar_cell:hover {
+        cursor: pointer;
+        opacity: 0.5;
+    }
+}

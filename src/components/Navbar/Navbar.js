@@ -165,7 +165,7 @@ export const Navbar = () => {
                                         </div>
                                     },
                                     { label: "Your profile", to: "/profile" },
-                                    { label: "Your repository", to: "/profile/repository" },
+                                    { label: "Your repository", to: "/profile" },
                                     { label: "Your Projects", to: "/profile/projects" },
                                     { label: "Your Stars", to: "/profile/stars" },
                                     { label: "Your Gists", to: "/profile/gists" },

@@ -1,8 +1,9 @@
 import React from 'react'
 import { Grid } from '@material-ui/core';
-import { TextAndIcon } from '../TextAndIcon/TextAndIcon';
 import { ClickedText } from '../ClickedText/ClickedText';
 import { BorderBottom } from '../BorderBottom/BorderBottom';
+import { FrameWorkAndColor } from '../FrameWorkAndColor/FrameWorkAndColor';
+import { TextAndIcon } from './../TextAndIcon/TextAndIcon';
 export const FrameworksNumbers = props => <div>
     <ClickedText fontWeight="500">
         {props.repository}
@@ -10,11 +11,10 @@ export const FrameworksNumbers = props => <div>
     <div style={{ fontSize: "14px", color: "gray" }}>
         {props.repositorySummary}
         <Grid container style={{ margin: "10px 0" }}>
-            <div>
-                <span style={{ background: props.background, padding: "0 10px", marginRight: "4px", alignSelf: "center", borderRadius: "50%" }}>
-                </span>
-                {props.framework}
-            </div>
+            <FrameWorkAndColor
+                background={props.background}
+                framework={props.framework}
+            />
             <TextAndIcon
                 height="15px"
                 fill="gray"

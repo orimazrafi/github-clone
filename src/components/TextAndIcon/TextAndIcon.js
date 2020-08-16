@@ -7,7 +7,7 @@ export const TextAndIcon = props => <div style={{ disply: "inline-block" }}>
         className={props.hover ? style.hover : style.cursor}
     >
         <svg onClick={props.handleClick}
-            style={{ height: props.height, fill: props.fill, position: props.position, right: props.right, top: props.top }} viewBox="0 0 16 16">
+            style={{ order: props.order, height: props.height, fill: props.fill, position: props.position, right: props.right, top: props.top }} viewBox={props.viewBox ? props.viewBox : "0 0 16 16"}>
             <path fillRule={props.fillRule} d={props.pathname}
             ></path>
             {props.svgPath2 ?

@@ -117,4 +117,13 @@ export const frameworksArray = [
         number: "550",
         background: "#f1e05a"
     },
+];
+export const repositoriesCards = [
+    { headLine: "vidly-app", summary: "React.js crud movies app with features as: pagination, likes, genres, login, register, authentication.", background: "yellow", framework: "JavaScript" },
+
+    { headLine: "weather-finder-app", summary: "React.js client app for search recipes using local storage and food2fork api.", background: "yellow", framework: "JavaScript" },
+    { headLine: "recipes-search-app", summary: "React.js app using weather API to get the weather condition on the required location.", background: "yellow", framework: "JavaScript" },
+    { headLine: "vidly-node", summary: "Node.js api for vidly app. includes test, routes, models, validation and authentication", background: "yellow", framework: "JavaScript" },
+    { headLine: "github-fetch-repos", summary: "javascript github api for fetching users repositories", background: "yellow", framework: "JavaScript" },
+    { headLine: "chat-app-chatkit", summary: "React.js chat app using chatkit API", background: "yellow", framework: "JavaScript" },
 ]

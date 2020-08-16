@@ -2,7 +2,7 @@ import React from 'react'
 import style from "./style.module.scss"
 
 export const HiddenPopover = (props) =>
-    <div>
+    <div key={props.key}>
         <div className={style.element}>
             {props.elementToHover}
         </div>
