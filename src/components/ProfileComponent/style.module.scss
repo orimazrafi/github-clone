@@ -17,3 +17,24 @@
         opacity: 0.5;
     }
 }
+
+.active_btn,
+.year_btn {
+    background: #0366d6;
+    padding: 10px 70px 10px 20px;
+    color: white;
+    border-radius: 6px;
+
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.year_btn {
+    color: gray;
+    background: none;
+
+    &:hover {
+        background: #f8f2f2;
+    }
+}

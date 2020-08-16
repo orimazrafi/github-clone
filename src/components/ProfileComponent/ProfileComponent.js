@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Grid, Card, Container } from '@material-ui/core'
 import { ClickedText } from '../ClickedText/ClickedText'
 import { FrameWorkAndColor } from '../FrameWorkAndColor/FrameWorkAndColor'
@@ -8,6 +8,7 @@ import { HiddenPopover } from '../HiddenPopover/HiddenPopover'
 import { BorderBottom } from '../BorderBottom/BorderBottom'
 import style from "./style.module.scss"
 export const ProfileComponent = (props) => {
+    const [activeYear, setActiveYear] = useState("2020");
     const handlePaint = () => {
         const paint = []
         for (let i = 0; i < 365; i++) {
@@ -155,6 +156,69 @@ export const ProfileComponent = (props) => {
                     </Grid>
                 </Container>
             </Card>
+        </Grid>
+        <Grid container style={{ justifyContent: "space-between", marginTop: "20px" }}>
+            <Grid>
+                Contribution activity
+                <Grid>
+                    <div style={{ fontSize: "12px", marginTop: "15px" }}>
+                        August 2020
+                    </div>
+                    <div style={{ borderLeft: "2px solid lightgray", height: "40vh", position: "absolute" }}></div>
+                    <div style={{ bottom: "7px", left: "72px", borderTop: "2px solid lightgray", width: "800px", position: "relative" }}></div>
+                    <Grid>
+                        <Container>
+                            <Grid>
+                                <ClickedText fontSize="18px">
+                                    Created 27
+                                    commits in
+                                    3
+                                    repositories
+      </ClickedText>
+                                orimazrafi/twitter-clone 13 commits
+                        {[{ repository: "orimazrafi/twitter-clone", commit: "13 commits" }].map(commit => <Grid key={Math.random()} container>
+                                    <Grid>
+                                        <ClickedText>
+
+                                            {commit.repository}
+                                        </ClickedText>
+                                    </Grid>
+                                    <Grid>
+                                        <ClickedText>
+
+                                            {commit.commit}
+                                        </ClickedText>
+
+                                    </Grid>
+                                </Grid>)}
+                            </Grid>
+                            <Grid>
+                                orimazrafi/twitter-clone 13 commits
+
+                        </Grid>
+                            <Grid>
+                                orimazrafi/twitter-clone 13 commits
+
+                        </Grid>
+                            <Grid>
+                                orimazrafi/twitter-clone 13 commits
+
+                        </Grid>
+                        </Container>
+                    </Grid>
+                    {/* <Container>
+
+                        orimazrafi/twitter-clone 13 commits
+                        orimazrafi/github-clone 11 commits
+                        orimazrafi/impreva-app 3 commits
+                        orimazrafi/impreva-app  JavaScriptAug 16
+                        orimazrafi/github-clone  JavaScriptAug 6
+                </Container> */}
+                </Grid>
+            </Grid>
+            <Grid>
+                {["2020", "2019", "2018", "2017"].map(year => <div key={Math.random()} onClick={() => setActiveYear(year)} className={activeYear === year ? style.active_btn : style.year_btn} style={{ display: "block" }}> {year}</div>)}
+            </Grid>
         </Grid>
     </>
 }
