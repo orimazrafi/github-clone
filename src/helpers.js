@@ -127,3 +127,21 @@ export const repositoriesCards = [
     { headLine: "github-fetch-repos", summary: "javascript github api for fetching users repositories", background: "yellow", framework: "JavaScript" },
     { headLine: "chat-app-chatkit", summary: "React.js chat app using chatkit API", background: "yellow", framework: "JavaScript" },
 ]
+export const commitsInRepositories =
+    [
+        {
+            date: "August 2020",
+            headline: `Created 27 commits in 3 repositories`,
+            repositoryCommits: [
+                { repository: "orimazrafi/twitter-clone", commit: "13 commits" },
+                { repository: "orimazrafi/twitter-clone", commit: "13 commits" },
+                { repository: "orimazrafi/twitter-clone", commit: "5 commits" }]
+        },
+        {
+            headline: `Created 2 repositories`,
+            repositoryCommits: [
+                { repository: "orimazrafi/impreva-app", framework: { framework: "JavaScript", background: "yellow" } },
+                { repository: "orimazrafi/github-clone", framework: { framework: "JavaScript", background: "yellow" } },
+            ]
+        }
+    ]

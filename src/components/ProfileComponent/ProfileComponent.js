@@ -7,6 +7,8 @@ import { TextAndIcon } from '../TextAndIcon/TextAndIcon'
 import { HiddenPopover } from '../HiddenPopover/HiddenPopover'
 import { BorderBottom } from '../BorderBottom/BorderBottom'
 import style from "./style.module.scss"
+import { commitsInRepositories } from './../../helpers';
+import { SvgIcon } from './../SvgIcon/SvgIcon';
 export const ProfileComponent = (props) => {
     const [activeYear, setActiveYear] = useState("2020");
     const handlePaint = () => {
@@ -18,13 +20,17 @@ export const ProfileComponent = (props) => {
     }
     const handleBackground = () => {
         let color = "#ebedf0"
-        console.log(Math.floor(Math.random() * 10))
         if (Math.floor(Math.random() * 10) < 5) return color = "#ebedf0"
         if (Math.floor(Math.random() * 10) === 5) return "#9be9a8"
         if (Math.floor(Math.random() * 10) === 6) return color = "#40c463";
         if (Math.floor(Math.random() * 10) > 6) return color = "#216e39";
         return color
 
+    }
+    const handleLineLength = commit => {
+        const commitsArray = commit.split(" ");
+        if (parseInt(commitsArray[0]) < 8) return "lightgreen"
+        if (parseInt(commitsArray[0]) > 8) return "green"
     }
     return <><Grid style={{ marginTop: "1.5rem", fontSize: "17px" }}>Popular repositories
 <Grid container style={{ justifyContent: "space-between", marginTop: "15px" }}>
@@ -161,59 +167,72 @@ export const ProfileComponent = (props) => {
             <Grid>
                 Contribution activity
                 <Grid>
-                    <div style={{ fontSize: "12px", marginTop: "15px" }}>
-                        August 2020
-                    </div>
-                    <div style={{ borderLeft: "2px solid lightgray", height: "40vh", position: "absolute" }}></div>
-                    <div style={{ bottom: "7px", left: "72px", borderTop: "2px solid lightgray", width: "800px", position: "relative" }}></div>
                     <Grid>
-                        <Container>
-                            <Grid>
-                                <ClickedText fontSize="18px">
-                                    Created 27
-                                    commits in
-                                    3
-                                    repositories
-      </ClickedText>
-                                orimazrafi/twitter-clone 13 commits
-                        {[{ repository: "orimazrafi/twitter-clone", commit: "13 commits" }].map(commit => <Grid key={Math.random()} container>
-                                    <Grid>
-                                        <ClickedText>
+                        {commitsInRepositories.map(commitObject => {
+                            return <Container key={Math.random()}>
+                                <div style={{ fontSize: "12px", marginTop: "15px" }}>
+                                    {commitObject.date}
+                                </div>
+                                <div style={{ borderLeft: "2px solid lightgray", height: "40vh", position: "absolute" }}></div>
+                                <div style={{ bottom: "7px", left: commitObject.date ? "72px" : "2px", borderTop: "2px solid lightgray", width: commitObject.date ? "800px" : "864px", position: "relative" }}></div>
+                                <Grid style={{ marginLeft: "25px" }}>
+                                    <ClickedText fontSize="18px" margin="25px 0 0 0 " >
+                                        {commitObject.headline}
+                                    </ClickedText>
+                                    <div style={{ padding: "10px", background: "lightgray", borderRadius: "50%", position: "relative", width: "10px", height: "10px", right: "37px", bottom: "24px" }}>
 
-                                            {commit.repository}
-                                        </ClickedText>
-                                    </Grid>
-                                    <Grid>
-                                        <ClickedText>
+                                        <SvgIcon
+                                            height="20px"
+                                            fill="black"
+                                            position="relative"
+                                            margin="0 4px 0 0 "
+                                            top="-5px"
+                                            right="6px"
+                                            fillRule="evenodd"
+                                            pathname="M1 2.5A2.5 2.5 0 013.5 0h8.75a.75.75 0 01.75.75v3.5a.75.75 0 01-1.5 0V1.5h-8a1 1 0 00-1 1v6.708A2.492 2.492 0 013.5 9h3.25a.75.75 0 010 1.5H3.5a1 1 0 100 2h5.75a.75.75 0 010 1.5H3.5A2.5 2.5 0 011 11.5v-9zm13.23 7.79a.75.75 0 001.06-1.06l-2.505-2.505a.75.75 0 00-1.06 0L9.22 9.229a.75.75 0 001.06 1.061l1.225-1.224v6.184a.75.75 0 001.5 0V9.066l1.224 1.224z" />
 
-                                            {commit.commit}
-                                        </ClickedText>
+                                    </div>
+                                    {commitObject.repositoryCommits.map((commit, index) => <Grid key={Math.random()} container style={{ margin: index === 0 ? "-10px 0 10px 0" : "10px 0" }}>
+                                        <Grid >
+                                            <ClickedText color="blue" underline="underline" fontSize="16px">
+                                                {commit.repository}
+                                            </ClickedText>
+                                        </Grid>
+                                        <Grid style={{ flexGrow: "1" }} >
+                                            {commit.commit ?
+                                                <Grid container>
+                                                    <Grid>
+                                                        <ClickedText margin="2px 2px 2px 6px" fontSize="14px">
+                                                            {commit.commit}
+                                                        </ClickedText>
+                                                    </Grid>
+                                                    <Grid style={{ margin: "7px 40px 0 auto" }}>
+                                                        <div style={{ borderRadius: "4px", borderBottom: `10px solid ${handleLineLength(commit.commit)}`, width: commit.commit.split(" ")[0] * 5 + "px" }} ></div>
+                                                    </Grid>
+                                                </Grid>
+                                                :
+                                                <Grid container>
+                                                    <Grid>
 
-                                    </Grid>
-                                </Grid>)}
-                            </Grid>
-                            <Grid>
-                                orimazrafi/twitter-clone 13 commits
+                                                        <FrameWorkAndColor
+                                                            background={commit.framework.background}
+                                                            framework={commit.framework.framework}
+                                                            color="gray"
+                                                            fontSize="14px"
+                                                        />
+                                                    </Grid>
+                                                    <Grid style={{ marginLeft: "auto" }}>
+                                                        Aug 16
+                                                        </Grid>
+                                                </Grid>
 
-                        </Grid>
-                            <Grid>
-                                orimazrafi/twitter-clone 13 commits
-
-                        </Grid>
-                            <Grid>
-                                orimazrafi/twitter-clone 13 commits
-
-                        </Grid>
-                        </Container>
+                                            }
+                                        </Grid>
+                                    </Grid>)}
+                                </Grid>
+                            </Container>
+                        })}
                     </Grid>
-                    {/* <Container>
-
-                        orimazrafi/twitter-clone 13 commits
-                        orimazrafi/github-clone 11 commits
-                        orimazrafi/impreva-app 3 commits
-                        orimazrafi/impreva-app  JavaScriptAug 16
-                        orimazrafi/github-clone  JavaScriptAug 6
-                </Container> */}
                 </Grid>
             </Grid>
             <Grid>
