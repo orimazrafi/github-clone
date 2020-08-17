@@ -2,7 +2,7 @@ import React from 'react'
 import { Grid } from '@material-ui/core'
 import style from "./style.module.scss"
 export const TextAndIcon = props => <div style={{ disply: "inline-block" }}>
-
+    {console.log(props.color)}
     <Grid container
         className={props.hover ? style.hover : style.cursor}
     >
@@ -15,7 +15,7 @@ export const TextAndIcon = props => <div style={{ disply: "inline-block" }}>
                 ></path> : null
             }
         </svg >
-        <span className={props.textHover ? style.text_hover : ""} style={{ margin: props.margin, color: props.fill }}>
+        <span className={props.textHover ? style.text_hover : ""} style={{ margin: props.margin, color: props.color }}>
             {props.text}
         </span>
     </Grid>

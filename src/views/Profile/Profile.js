@@ -2,12 +2,14 @@ import React, { useState } from 'react'
 import { BorderBottom } from '../../components/BorderBottom/BorderBottom'
 import { Grid, Avatar, Tab, Tabs } from '@material-ui/core'
 import { userName } from './../../helpers';
-import { TextAndIcon } from '../../components/TextAndIcon/TextAndIcon';
 import { Switch, Route } from 'react-router-dom';
 import { ProfileComponent } from './../../components/ProfileComponent/ProfileComponent';
 import { TabComponent } from './../../components/TabComponent/TabComponent';
 import { SvgIcon } from './../../components/SvgIcon/SvgIcon';
 import { ClickedText } from '../../components/ClickedText/ClickedText';
+import { TextAndIcon } from './../../components/TextAndIcon/TextAndIcon';
+import { HiddenPopover } from '../../components/HiddenPopover/HiddenPopover';
+import { HiddenElementCard } from '../../components/HiddenElementCard/HiddenElementCard';
 export const Profile = props => {
     const [value, setValue] = useState(0);
 
@@ -17,10 +19,103 @@ export const Profile = props => {
     return <div style={{ background: "white" }}>
         <BorderBottom position="relative" top="100px" />
         <Grid container style={{ padding: "53px 150px" }}>
-            <Grid item xs={2}>
+            <Grid item xs={3} style={{ paddingRight: "50px" }}>
                 <Avatar style={{ height: "260px", width: "260px" }} alt={userName} src="https://avatars3.githubusercontent.com/u/26501267?s=460&u=5187dc26423622bea98a8f509768cacd2a26707b&v=4" />
+                <div style={{ fontSize: "28px", fontWeight: "bold", letterSpacing: "0.3" }}>
+                    ori mazrafi
+            </div>
+                <div style={{ marginBottom: "15px", fontSize: "18px", color: "gray", letterSpacing: "0.3" }}>
+                    orimazrafi
+            </div>
+                <div>
+                    I'm passionate junior web developer and allways looking to learn and improve my skills, loving create UI's and see how my code comes to life : )
+            </div>
+                <button style={{ width: "100%", background: "#fafbfc", boxShadow: "0 1px 0 rgba(27,31,35,.04), inset 0 1px 0 hsla(0,0%,100%,.25)", margin: "15px 0", fontSize: "14px", fontWeight: "500", borderRadius: "4px", border: "1px solid gray", padding: "6px", color: "#24292e" }}>Edit Profile</button>
+                <Grid container>
+
+                    <TextAndIcon
+                        height="15px"
+                        fill="gray"
+                        position="relative"
+                        top="5px"
+                        right="-2px"
+                        hover="hover"
+                        pathname="M8 .25a.75.75 0 01.673.418l1.882 3.815 4.21.612a.75.75 0 01.416 1.279l-3.046 2.97.719 4.192a.75.75 0 01-1.088.791L8 12.347l-3.766 1.98a.75.75 0 01-1.088-.79l.72-4.194L.818 6.374a.75.75 0 01.416-1.28l4.21-.611L7.327.668A.75.75 0 018 .25zm0 2.445L6.615 5.5a.75.75 0 01-.564.41l-3.097.45 2.24 2.184a.75.75 0 01.216.664l-.528 3.084 2.769-1.456a.75.75 0 01.698 0l2.77 1.456-.53-3.084a.75.75 0 01.216-.664l2.24-2.183-3.096-.45a.75.75 0 01-.564-.41L8 2.694v.001z"
+                        text={"1"}
+                        textHover="textHover"
+                        margin="0 6px"
+                        color="black"
+
+                    />
+                    <ClickedText fontSize="15px" margin="1px 4px">
+                        follower
+                    </ClickedText>
+                    ·
+                    <ClickedText fontSize="15px" margin="1px 4px">
+                        <span style={{ color: "black" }}>0</span> following
+                    </ClickedText>
+                    ·
+                   <TextAndIcon
+                        height="15px"
+                        fill="gray"
+                        position="relative"
+                        top="5px"
+                        right="-4px"
+                        hover="hover"
+                        pathname="M8 .25a.75.75 0 01.673.418l1.882 3.815 4.21.612a.75.75 0 01.416 1.279l-3.046 2.97.719 4.192a.75.75 0 01-1.088.791L8 12.347l-3.766 1.98a.75.75 0 01-1.088-.79l.72-4.194L.818 6.374a.75.75 0 01.416-1.28l4.21-.611L7.327.668A.75.75 0 018 .25zm0 2.445L6.615 5.5a.75.75 0 01-.564.41l-3.097.45 2.24 2.184a.75.75 0 01.216.664l-.528 3.084 2.769-1.456a.75.75 0 01.698 0l2.77 1.456-.53-3.084a.75.75 0 01.216-.664l2.24-2.183-3.096-.45a.75.75 0 01-.564-.41L8 2.694v.001z"
+                        text={"10"}
+                        textHover="textHover"
+                        margin="1px 8px"
+                        color="black"
+                    />
+                </Grid>
+                <Grid style={{ margin: "15px 0" }}>
+
+                    <TextAndIcon
+                        fillRule="evenodd"
+                        height="15px"
+                        fill="gray"
+                        position="relative"
+                        top="5px"
+                        right="-4px"
+                        hover="hover"
+                        pathname="M1.75 2A1.75 1.75 0 000 3.75v.736a.75.75 0 000 .027v7.737C0 13.216.784 14 1.75 14h12.5A1.75 1.75 0 0016 12.25v-8.5A1.75 1.75 0 0014.25 2H1.75zM14.5 4.07v-.32a.25.25 0 00-.25-.25H1.75a.25.25 0 00-.25.25v.32L8 7.88l6.5-3.81zm-13 1.74v6.441c0 .138.112.25.25.25h12.5a.25.25 0 00.25-.25V5.809L8.38 9.397a.75.75 0 01-.76 0L1.5 5.809z"
+                        text={"orimazrafi@gmail.com"}
+                        textHover="textHover"
+                        margin="1px 8px"
+                        color="black"
+                    />
+
+
+                </Grid>
+                <BorderBottom margin="15px 0" />
+                <div style={{ fontWeight: "bold", marginBottom: "15px" }}>Highlights</div>
+                <HiddenPopover
+                    elementToHover={<TextAndIcon
+                        fillRule="evenodd"
+                        height="15px"
+                        fill="gray"
+                        position="relative"
+                        top="5px"
+                        right="-4px"
+                        pathname="M8.5.75a.75.75 0 00-1.5 0v5.19L4.391 3.33a.75.75 0 10-1.06 1.061L5.939 7H.75a.75.75 0 000 1.5h5.19l-2.61 2.609a.75.75 0 101.061 1.06L7 9.561v5.189a.75.75 0 001.5 0V9.56l2.609 2.61a.75.75 0 101.06-1.061L9.561 8.5h5.189a.75.75 0 000-1.5H9.56l2.61-2.609a.75.75 0 00-1.061-1.06L8.5 5.939V.75z"
+                        text={"Arctic Code Vault Contributor"}
+                        margin="1px 8px"
+                        color="black"
+                    />}
+                    hiddenElement={<HiddenElementCard
+                        img="https://avatars0.githubusercontent.com/u/974035?s=64&v=4"
+                        userName="@voronianski"
+                        fullname="Dmitri Voronianski"
+                        lastName="voronianski"
+                        languages="*.js,*.lua,*.swift"
+                        firstText="SumUp"
+                        secondText="KOSMETISM"
+                    />
+                    }
+                />
             </Grid>
-            <Grid item xs={10} style={{ padding: "0 60px" }}>
+            <Grid item xs={9} >
                 <Tabs
                     value={value}
                     onChange={handleChange}
