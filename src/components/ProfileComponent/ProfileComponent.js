@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Grid, Card, Container } from '@material-ui/core'
+import { Grid, Card, Container, Button } from '@material-ui/core'
 import { ClickedText } from '../ClickedText/ClickedText'
 import { FrameWorkAndColor } from '../FrameWorkAndColor/FrameWorkAndColor'
 import { repositoriesCards } from "../../helpers"
@@ -173,12 +173,28 @@ export const ProfileComponent = (props) => {
                                 <div style={{ fontSize: "12px", marginTop: "15px" }}>
                                     {commitObject.date}
                                 </div>
-                                <div style={{ borderLeft: "2px solid lightgray", height: "40vh", position: "absolute" }}></div>
-                                <div style={{ bottom: "7px", left: commitObject.date ? "72px" : "2px", borderTop: "2px solid lightgray", width: commitObject.date ? "800px" : "864px", position: "relative" }}></div>
+                                <div style={{ borderLeft: "2px solid lightgray", minHeight: "168px", position: "absolute" }}></div>
+                                <div style={{ bottom: "7px", marginTop: commitObject.date ? "" : "-5px", left: commitObject.date ? "72px" : "2px", borderTop: "2px solid lightgray", width: commitObject.date ? "800px" : "864px", position: "relative" }}></div>
                                 <Grid style={{ marginLeft: "25px" }}>
-                                    <ClickedText fontSize="18px" margin="25px 0 0 0 " >
-                                        {commitObject.headline}
-                                    </ClickedText>
+                                    <Grid container style={{ margin: "25px 0 0 0 " }}>
+
+                                        <ClickedText fontSize="18px"  >
+                                            {commitObject.headline}
+                                        </ClickedText>
+                                        <Grid style={{ margin: "2px 0 0 auto" }}>
+
+                                            <SvgIcon
+                                                height="20px"
+                                                fill="gray"
+                                                position="relative"
+                                                margin="0 4px 0 0 "
+                                                top="-5px"
+                                                right="6px"
+                                                fillRule="evenodd"
+                                                pathname="M10.896 2H8.75V.75a.75.75 0 00-1.5 0V2H5.104a.25.25 0 00-.177.427l2.896 2.896a.25.25 0 00.354 0l2.896-2.896A.25.25 0 0010.896 2zM8.75 15.25a.75.75 0 01-1.5 0V14H5.104a.25.25 0 01-.177-.427l2.896-2.896a.25.25 0 01.354 0l2.896 2.896a.25.25 0 01-.177.427H8.75v1.25zm-6.5-6.5a.75.75 0 000-1.5h-.5a.75.75 0 000 1.5h.5zM6 8a.75.75 0 01-.75.75h-.5a.75.75 0 010-1.5h.5A.75.75 0 016 8zm2.25.75a.75.75 0 000-1.5h-.5a.75.75 0 000 1.5h.5zM12 8a.75.75 0 01-.75.75h-.5a.75.75 0 010-1.5h.5A.75.75 0 0112 8zm2.25.75a.75.75 0 000-1.5h-.5a.75.75 0 000 1.5h.5z" />
+
+                                        </Grid>
+                                    </Grid>
                                     <div style={{ padding: "10px", background: "lightgray", borderRadius: "50%", position: "relative", width: "10px", height: "10px", right: "37px", bottom: "24px" }}>
 
                                         <SvgIcon
@@ -206,32 +222,35 @@ export const ProfileComponent = (props) => {
                                                             {commit.commit}
                                                         </ClickedText>
                                                     </Grid>
-                                                    <Grid style={{ margin: "7px 40px 0 auto" }}>
-                                                        <div style={{ borderRadius: "4px", borderBottom: `10px solid ${handleLineLength(commit.commit)}`, width: commit.commit.split(" ")[0] * 5 + "px" }} ></div>
+                                                    <Grid style={{ margin: "7px 150px 0 auto" }}>
+                                                        <div style={{ borderRadius: "4px", borderBottom: `10px solid ${handleLineLength(commit.commit)}`, width: commit.commit.split(" ")[0] * 7 + "px" }} ></div>
                                                     </Grid>
                                                 </Grid>
                                                 :
                                                 <Grid container>
                                                     <Grid>
-
                                                         <FrameWorkAndColor
+                                                            margin="3px 5px 0 5px"
                                                             background={commit.framework.background}
                                                             framework={commit.framework.framework}
                                                             color="gray"
                                                             fontSize="14px"
                                                         />
                                                     </Grid>
-                                                    <Grid style={{ marginLeft: "auto" }}>
+                                                    <Grid style={{ margin: "4px 0 0.5px auto ", fontSize: "14px", color: "gray" }}>
                                                         Aug 16
                                                         </Grid>
                                                 </Grid>
-
                                             }
                                         </Grid>
                                     </Grid>)}
                                 </Grid>
                             </Container>
                         })}
+                        <button className={style.show_more_activity} style={{ border: "1px solid lightgray", background: "white", fontSize: "13px", fontWeight: "600", padding: "12px", width: "100%", borderRadius: "7px", color: "blue" }}>Show more activity</button>
+                        <div style={{ margin: "40px 0 70px 0", color: "gray", fontSize: "14px" }}>
+                            Seeing something unexpected? Take a look at the <ClickedText inlineBlock="inline-block" color="blue" underline="underline">
+                                GitHub profile guide.    </ClickedText></div>
                     </Grid>
                 </Grid>
             </Grid>
